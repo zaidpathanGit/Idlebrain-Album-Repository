@@ -1,1 +1,1 @@
-# Idlebrain-Album-Repository
+# Idlebrain-Albums-Repository

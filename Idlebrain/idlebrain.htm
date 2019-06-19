@@ -1,0 +1,89 @@
+<html>
+<head>
+
+	<!-- <script src="E:\College\SEM 4\WD\Website - Copy\jquery.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+	<script>
+	
+	var hid=0;
+	var t=0;
+	
+	$(document).ready(function()
+		{	
+		
+		//testing the scrolling division
+		
+		$(window).scroll(function(){
+          $("section.main").stop().animate({"marginTop": ($(window).scrollTop()) + "px"}, "slow" );
+        });
+		
+		
+			$('#download').click(function()
+			{
+				$('.save').click();
+				$('.img').click();
+				
+			});		
+		}); 
+		
+		function load1()
+		{
+			var bu = document.getElementById('iurl').value;
+			var bu1 = document.getElementById('iurl').value;
+			var au; 
+			var au1;
+			
+			au = bu.replace("1.jpg","");
+			au = au.replace("th_","");
+			
+			au1 = bu1.replace("1.jpg","");
+			
+			var s = document.getElementById('s').value;
+			var e = document.getElementById('e').value;
+		
+		
+			for(var i=s;i<=e;i++)
+			{
+				$('body').append("<b id='"+t+""+i+"'>"+i+"</b><a id='"+t+""+i+"' class='save' href='"+au+""+i+".jpg' download><img onerror='hid=this.id; hidefunction(hid);' class='save' id='"+t+""+i+"' src='"+au1+""+i+".jpg' height='300px' width='200px'></a>");
+
+			}
+			
+			t=t+1;
+		}
+		
+		function removei(uid)
+		{
+			$('img').filter('#'+uid+'').remove();
+		}
+		
+		function hidefunction(hid)
+		{
+			$('img').filter('#'+hid+'').remove();
+			$('b').filter('#'+hid+'').remove();
+			$('a').filter('#'+hid+'').remove();
+		}
+		
+			
+	</script>
+	
+</head>
+<body>
+	
+	<section class="main" style="width:100%; position:absolute;">
+	
+	<div id="mainsection"><input type="text" id="iurl" placeholder="Copy and Paste Image Url Here" style="width:65%;" required>
+	<input type="text" id="s" placeholder="Starting Index" style="width:90px;" required>
+	<input type="text" id="e" placeholder="Ending Index" style="width:90px;" required>
+	
+	<button onclick="load1();"> Load Images </button>
+	
+	<button id="download"> Download All Images </button><hr>
+	</div>
+	
+	
+	</section>
+	
+</body>
+</html>
